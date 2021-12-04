@@ -20,21 +20,21 @@ class Game(tk.Frame):
 
     def make_GUI(self):
         # создаем доску (графический интерфейс)
-        self.cells = []
+        self.bars = []
         for i in range(4):
             row = []
             for j in range(4):
                 cell_frame = tk.Frame(
                     self.main_grid,
-                    bg=c.EMPTY_CELL_COLOR,
+                    bg=c.EMPTY_BAR_COLOR,
                     width=100,
                     height=100)
-                cell_frame.grid(row=i, column=j, padx=5, pady=5)
-                cell_number = tk.Label(self.main_grid, bg=c.EMPTY_CELL_COLOR)
-                cell_number.grid(row=i, column=j)
-                cell_data = {"frame": cell_frame, "number": cell_number}
-                row.append(cell_data)
-            self.cells.append(row)
+                bar_frame.grid(row=i, column=j, padx=5, pady=5)
+                bar_number = tk.Label(self.main_grid, bg=c.EMPTY_BAR_COLOR)
+                bar_number.grid(row=i, column=j)
+                bar_data = {"frame": bar_frame, "number": bar_number}
+                row.append(bar_data)
+            self.bars.append(row)
 
         # создаем окно для вывода общего счета
         score_frame = tk.Frame(self)
