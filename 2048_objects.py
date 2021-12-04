@@ -1,42 +1,58 @@
-class Board
-    def __init__(self):
-        self.board=[]
-        self.gridCell=[[0]*4 for i in range(4)]
-        self.compress=False
-        self.merge=False
-        self.moved=False
-        self.score=0
+import random
 
-class Game:
-    def __init__(self,gamepanel):
-        self.gamepanel=gamepanel
-        self.end=False
-        self.won=False
+colors = dict()
 
-    def start(self):
-        self.gamepanel.random_cell()
-        self.gamepanel.random_cell()
-        self.gamepanel.paintGrid()
-        self.gamepanel.window.bind('<Key>', self.link_keys)
-        self.gamepanel.window.mainloop()
+colors['0'] = '#a3a3a3'
+colors['2'] = '#deb976'
+colors['4'] = '#ede0c8'
+colors['8'] = '#edc850'
+colors['16'] = '#edc53f'
+colors['32'] = '#f67c5f'
+colors['64'] = '#f65e3b'
+colors['128'] = '#edcf72'
+colors['256'] = '#edcc61'
+colors['512'] = '#f2b179'
+colors['1024'] = '#f59563'
+colors['2048'] = '#edc22e'
 
-    def link_keys(self,event):
-        if self.end or self.won:
-            return
+class Bar:
+    def __init__(self, i, j):
+        self.value = 0
+        self.color = colors[str(self.value)]
+        self.i = i
+        self.j = j
 
-    self.gamepanel.compress = False
-    self.gamepanel.merge = False
-    self.gamepanel.moved = False
+    def change_color(self,value):
+        self.color = colors[str(self.value)]
 
-    self.gamepanel.paintGrid()
-    print(self.gamepanel.score)
+    def place_value(self):
+        label(self,value)
 
-    flag=0
+b = Bar(0,0,4)
+
+b.value = 2
+b.change_color()
+
+print(b.color)
+
+bars = []
+bars.value
+
+for i in range(4):
+    for j in range(4):
+        b = Bar(i,j)
+        bars.append(b)
+        bars.value.append(b.value)
+
+if len(count_empty(bars.value)) !=0:
+    append_new_value(bars.values)
     for i in range(4):
         for j in range(4):
-            if(self.gamepanel.gridCell[i][j]==0:
-                flag=1
-                break
-            
+            bars[i][j].value = bars.values[i][j]
+        
+
+
+
+
 
 
