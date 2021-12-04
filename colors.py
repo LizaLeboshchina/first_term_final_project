@@ -1,5 +1,5 @@
 GRID_COLOR = "#a39489"
-EMPTY_CELL_COLOR = "#c2b3a9"
+EMPTY_BAR_COLOR = "#c2b3a9"
 SCORE_LABEL_FONT = ("Verdana", 20)
 SCORE_FONT = ("Helvetica", 32, "bold")
 GAME_OVER_FONT = ("Helvetica", 48, "bold")
@@ -7,7 +7,7 @@ GAME_OVER_FONT_COLOR = "#ffffff"
 WINNER_BG = "#ffcc00"
 LOSER_BG = "#a39489"
 
-CELL_COLORS = {
+BAR_COLORS = {
     2: "#fcefe6",
     4: "#f2e8cb",
     8: "#f5b682",
@@ -21,7 +21,7 @@ CELL_COLORS = {
     2048: "#fad74d"
 }
 
-CELL_NUMBER_COLORS = {
+BAR_NUMBER_COLORS = {
     2: "#695c57",
     4: "#695c57",
     8: "#ffffff",
@@ -35,7 +35,7 @@ CELL_NUMBER_COLORS = {
     2048: "#ffffff"
 }
 
-CELL_NUMBER_FONTS = {
+BAR_NUMBER_FONTS = {
     2: ("Helvetica", 55, "bold"),
     4: ("Helvetica", 55, "bold"),
     8: ("Helvetica", 55, "bold"),
