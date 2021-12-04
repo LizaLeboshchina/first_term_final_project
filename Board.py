@@ -1,52 +1,48 @@
-from tkinter import *
-from tkinter import messagebox
+import tkinter as tk
 import random
-class Board:
-    bg_color={
-        '2': '#eee4da',
-        '4': '#ede0c8',
-        '8': '#edc850',
-        '16': '#edc53f',
-        '32': '#f67c5f',
-        '64': '#f65e3b',
-        '128': '#edcf72',
-        '256': '#edcc61',
-        '512': '#f2b179',
-        '1024': '#f59563',
-        '2048': '#edc22e',
-    }
-    color={
-        '2': '#776e65',
-        '4': '#f9f6f2',
-        '8': '#f9f6f2',
-        '16': '#f9f6f2',
-        '32': '#f9f6f2',
-        '64': '#f9f6f2',
-        '128': '#f9f6f2',
-        '256': '#f9f6f2',
-        '512': '#776e65',
-        '1024': '#f9f6f2',
-        '2048': '#f9f6f2',
-    }
+import colors as c
+
+
+class Game(tk.Frame):
     def __init__(self):
-        self.n=4
-        self.window=Tk()
-        self.window.title('2048 Game')
-        self.gameArea=Frame(self.window,bg= 'azure3')
-        self.board=[]
-        self.score=0
+        tk.Frame.__init__(self)
+        self.grid()
+        self.master.title('2048')
+
+        self.main_grid = tk.Frame(
+            self, bg=c.GRID_COLOR, bd=3, width=400, height=400)
+        self.main_grid.grid(pady=(80, 0))
+        self.make_GUI()
+        self.start_game()
+
+        self.mainloop()
+
+
+    def make_GUI(self):
+        # создаем доску (графический интерфейс)
+        self.cells = []
         for i in range(4):
-            rows=[]
+            row = []
             for j in range(4):
-                l=Label(self.gameArea,text='',bg='azure4',
-                font=('arial',22,'bold'),width=4,height=2)
-                l.grid(row=i,column=j,padx=7,pady=7)
-                rows.append(l);
-            self.board.append(rows)
-        self.gameArea.grid()
+                cell_frame = tk.Frame(
+                    self.main_grid,
+                    bg=c.EMPTY_CELL_COLOR,
+                    width=100,
+                    height=100)
+                cell_frame.grid(row=i, column=j, padx=5, pady=5)
+                cell_number = tk.Label(self.main_grid, bg=c.EMPTY_CELL_COLOR)
+                cell_number.grid(row=i, column=j)
+                cell_data = {"frame": cell_frame, "number": cell_number}
+                row.append(cell_data)
+            self.cells.append(row)
 
-    
-   
-    
-gamepanel =Board()
-
+        # создаем окно для вывода общего счета
+        score_frame = tk.Frame(self)
+        score_frame.place(relx=0.5, y=40, anchor="center")
+        tk.Label(
+            score_frame,
+            text="Score",
+            font=c.SCORE_LABEL_FONT).grid(
+            row=0)
+        self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
+        self.score_label.grid(row=1)
