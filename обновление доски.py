@@ -1,24 +1,32 @@
-import tkinter as tk
-import random
-import colors as c
+#Экран: 400х480, отступ 80 сверху для подсчета очков, отступы у плиток от границ по 5.
 
 
+coords = [[[5,85],[105,85],[205,85],[305,85]],     #1 строка плиток
+          [[5,185],[105,185],[205,185],[305,185]],  #2 строка плиток
+          [[5,285],[105,285],[205,285],[305,285]],  #3 строка плиток
+          [[5,385],[105,385],[205,385],[305,385]]]   #4 строка плиток
 
-def update_GUI(self):
-        for i in range(4):
-            for j in range(4):
-                bar_value = self.matrix[i][j]
-                if bar_value == 0:
-                    self.bars[i][j]["frame"].configure(bg=c.EMPTY_BAR_COLOR)
-                    self.bars[i][j]["number"].configure(
-                        bg=c.EMPTY_BAR_COLOR, text="")
-                else:
-                    self.bars[i][j]["frame"].configure(
-                        bg=c.BAR_COLORS[bar_value])
-                    self.bars[i][j]["number"].configure(
-                        bg=c.BAR_COLORS[bar_value],
-                        fg=c.BAR_NUMBER_COLORS[bar_value],
-                        font=c.BAR_NUMBER_FONTS[bar_value],
-                        text=str(bar_value))
-        self.score_label.configure(text=self.score)
-        self.update_idletasks()
+
+for i in range(4):
+    for j in range (4):
+        bar = Bar(i, j, x, y)
+
+def create_image(bar):
+    bar.image = canv.label(text = str(bar.value),
+                           bg = bar.color,
+                           fg = bar.number.color[bar.value]
+                        ).place(x = bar.x,
+                                y = bar.y
+                            )
+    
+def update_image(bar):
+    bar.image = canv.label(x = bar.x,
+                           y = bar.y,
+                           text = str(bar.value),
+                           bg = bar.color,
+                           fg = bar.number.color[bar.value]
+                        ).place(x = bar.x,
+                                y = bar.y
+                            )
+    
+    
