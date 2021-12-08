@@ -8,6 +8,7 @@ Created on Sat Dec  4 21:35:02 2021
 from 2048_model import *
 from 2048_vis import *
 from 2048_objects import *
+import colors as c
 
 score = 0
 bars = []
@@ -101,6 +102,45 @@ def new_game(event = ''):
         if win():
             game = False
     break
+
+
+def main():
+    grid()
+    root.title('2048')
+
+    main_grid = tk.Frame(
+        bg=c.GRID_COLOR, bd=3, width=400, height=400)
+    main_grid.grid(pady=(80, 0))
+    # создаем окно для вывода общего счета
+    score_frame = tk.Frame(self)
+    score_frame.place(relx=0.5, y=40, anchor="center")
+    tk.Label(
+        score_frame,
+        text="Score",
+        font=c.SCORE_LABEL_FONT).grid(
+        row=0)
+    score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
+    score_label.grid(row=1)
+
+    bars = []
+
+ # создаем доску (графический интерфейс)
+    def create_board(main_grid): 
+        global bars 
+        for i in range(4):
+            row = []
+            for j in range(4):
+                bar_frame = tk.Frame(
+                    main_grid,
+                    bg=c.EMPTY_BAR_COLOR,
+                    width=100,
+                    height=100)
+                bar_frame.grid(row=i, column=j, padx=5, pady=5)
+                bar_number = tk.Label(main_grid, bg=c.EMPTY_BAR_COLOR)
+                bar_number.grid(row=i, column=j)
+                bar_data = {"frame": bar_frame, "number": bar_number}
+                row.append(bar_data)
+                bars.append(row)
         
 new_game()
 
