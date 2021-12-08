@@ -25,8 +25,6 @@ class Bar:
     def change_color(self,value):
         self.color = colors[str(self.value)]
 
-    def place_value(self):
-        label(self,value)
 
 b = Bar(0,0,4)
 
